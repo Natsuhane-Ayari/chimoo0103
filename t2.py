@@ -132,5 +132,4 @@ while command != "q":
         if modob == "aimPort":
             lugg.modify(modid,aimPort=modvalue)
         if modob == "owner":
-            print(1111111)
             lugg.modify(modid,owner=modvalue)
