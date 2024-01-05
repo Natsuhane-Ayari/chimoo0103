@@ -1,6 +1,6 @@
 class bdPass:
     data = []
-    def query(id): #查詢 cpl
+    def query(id): #查詢登機證
         for i in range(len(bdPass.data)):
             if id == bdPass.data[i]['id']:
                 print("旅客姓名:\t%s"%(bdPass.data[i]['name']))
@@ -11,8 +11,8 @@ class bdPass:
                 print("行李件數:\t%s"%(bdPass.data[i]['dLugg']))
                 print("行李ID:\t\t%s"%(bdPass.data[i]['idLugg']))
 
-    def modify(id,name=-1,time=-1,apdID=-1,seat=-1,dLugg=-1,idLugg=-1): #修改 cpl
-        for i in range(len(bdPass.data)):
+    def modify(id,name=-1,time=-1,apdID=-1,seat=-1,dLugg=-1,idLugg=-1): #修改登機證
+        for i in range(len(bdPass.data)): #這些參數都先預設為-1，後面判斷不是-1的就是有修改過的
             if bdPass.data[i]['id'] == id:
                 if name != -1:
                     bdPass.data[i]['name'] = name
@@ -27,7 +27,7 @@ class bdPass:
                 if idLugg != -1:
                     bdPass.data[i]['idLugg'] = idLugg
 
-    def __init__(self,name,id,time,apdID,seat,dLugg,idLugg):
+    def __init__(self,name,id,time,apdID,seat,dLugg,idLugg): #物件屬性
         self.name = name
         self.id = id
         self.time = time
@@ -35,7 +35,7 @@ class bdPass:
         self.seat = seat
         self.dLugg = dLugg
         self.idLugg = idLugg
-        bdPass.data.append({
+        bdPass.data.append({ #存入字典
             "name":self.name,
             "id":self.id,
             "time":self.time,
@@ -76,11 +76,13 @@ class lugg:
         self.startPort = startPort
         self.aimPort = aimPort
         self.owner = owner
-        lugg.data.append({"id":self.id,
-                          "weight":self.weight,
-                          "startPort":self.startPort,
-                          "aimPort":self.aimPort,
-                          "owner":self.owner})
+        lugg.data.append({ #存入字典
+            "id":self.id,
+            "weight":self.weight,
+            "startPort":self.startPort,
+            "aimPort":self.aimPort,
+            "owner":self.owner
+        })
 
 tra1 = bdPass("夏羽綾理",1180,"9:00","A12","E",2,10180)
 tra2 = bdPass("夏羽奈莉香",1185,"9:00","A12","F",1,10182)
@@ -90,7 +92,7 @@ tra3 = bdPass("浮橋思羽",1919,"8:10","A12","C",1,14514)
 
 ayari1 = lugg(10180,3,"2號機場","養機場","夏羽綾理")
 ayari2 = lugg(10180,2,"2號機場","養機場","夏羽綾理")
-narika1 = lugg(10185,2,"2號機場","養機場","夏羽綾理")
+narika1 = lugg(10185,2,"2號機場","養機場","夏羽奈莉香")
 kotowa = lugg(14514,1,"14號機場","18機場","浮橋思羽")
 
 
